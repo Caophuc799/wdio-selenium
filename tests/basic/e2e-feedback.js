@@ -1,6 +1,7 @@
+import App from '../../page-objects/App'
 describe('E2E Testing - Feedback', () => {
 	it('should load feedback form', () => {
-        browser.url('http://zero.webappsecurity.com/index.html')
+        App.openHomePage()
         const feedBackButton = $('#feedback');
         feedBackButton.waitForExist();
         feedBackButton.click();

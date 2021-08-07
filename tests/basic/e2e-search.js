@@ -1,6 +1,7 @@
+import App from '../../page-objects/App'
 describe('E2E Tests - Search', () => {
 	it('Should load homepage', () => {
-		browser.url('http://zero.webappsecurity.com/index.html')
+		App.openHomePage()
 		$('#searchTerm').waitForExist()
 	})
  

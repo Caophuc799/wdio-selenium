@@ -1,28 +1,27 @@
+import App from '../../page-objects/App'
+import LoginPage from '../../page-objects/pages/LoginPage'
+import PaymentPage from '../../page-objects/pages/PaymentPage'
+import InsideNavbar from '../../page-objects/components/InsideNavbar'
+import Navbar from '../../page-objects/components/Navbar'
+ 
 describe('E2E Tests - Pay', () => {
 	it('Should log into application', () => {
-		browser.url('http://zero.webappsecurity.com/index.html')
-		$('#signin_button').waitForExist()
-		$('#signin_button').click()
-		$('#login_form').waitForExist()
-		$('#user_login').setValue('username')
-		$('#user_password').setValue('password')
-		$('input[type="submit"]').click()
-		$('.nav-tabs').waitForExist()
+		App.openLoginPage()
+		LoginPage.login('username', 'password')
+		Navbar.insideNavbarIsVisible()
 	})
  
 	it('Should make payment', () => {
-		$('#pay_bills_tab').click()
-		const selectPayee = $('#sp_payee')
+		InsideNavbar.clickPayBillsTab()
+		const selectPayee = PaymentPage.payeeSelect
 		selectPayee.waitForExist()
 		selectPayee.selectByAttribute('value', 'apple')
-		const selectAccount = $('#sp_account')
+		const selectAccount = PaymentPage.accountSelect
 		selectAccount.waitForExist()
 		selectAccount.selectByVisibleText('Loan')
-		$('#sp_amount').setValue('500')
-		$('#sp_date').setValue('2020-03-31')
-		$('#sp_description').setValue('Test')
-		$('#pay_saved_payees').click()
-		const message = $('#alert_content')
+		PaymentPage.fillForm('500', '2020-03-31', 'Test')
+		PaymentPage.submitForm()
+		const message = PaymentPage.message
 		expect(message).toHaveText('The payment was successfully submitted.')
 	})
 })
