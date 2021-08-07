@@ -4,7 +4,7 @@
   "description": "Software testing with driver io",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "wdio wdio.conf.js"
   },
   "keywords": [
     "Automation",
@@ -13,6 +13,19 @@
   "author": "Cao Cao",
   "license": "ISC",
   "devDependencies": {
-    "@wdio/cli": "^7.9.0"
-  }
+    "@babel/cli": "^7.14.8",
+    "@babel/core": "^7.15.0",
+    "@babel/preset-env": "^7.15.0",
+    "@babel/register": "^7.14.5",
+    "@wdio/cli": "^7.9.0",
+    "@wdio/local-runner": "^7.9.0",
+    "@wdio/mocha-framework": "^7.9.0",
+    "@wdio/spec-reporter": "^7.9.0",
+    "@wdio/sync": "^7.9.0",
+    "chromedriver": "^92.0.1",
+    "prettier": "^2.3.2",
+    "wdio-chromedriver-service": "^7.2.0",
+    "webdriverio": "^7.9.0"
+  },
+  "dependencies": {}
 }
